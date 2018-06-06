@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Sample" 
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Sample.MainPage">
+    <Grid BackgroundColor="#E5F0F4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <cv:CarouselViewControl x:Name="carousel"
+            Grid.Row="0"
+            ItemsSource="{Binding MyItemsSource}"
+            ShowArrows="false"
+            ShowIndicators="true"
+            PositionSelectedCommand="{Binding MyCommand}"
+            PositionSelected="Handle_PositionSelected"
+            Scrolled="Handle_Scrolled"
+            Orientation="Horizontal" />
+
+        <ListView x:Name="lstView" BackgroundColor="#E5F0F4" HasUnevenRows="true" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Tapped="ViewCellTap">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="1" Font="Bold,26"
+                                   Text="{Binding Name}" 
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="CenterAndExpand" />
+
+                            <Label Grid.Row="1" Grid.Column="1" Font="14" 
+                                   Text="{Binding Description}"
+                                   LineBreakMode="WordWrap"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="CenterAndExpand" />
+
+                            <StackLayout Spacing="20" Orientation="Horizontal" 
+                                         Opacity="0.7" Grid.Column="1" Grid.Row="2">
+
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="EditViewCellClicked" NumberOfTapsRequired="1" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image Source="pencil.png" 
+                                           HeightRequest="25" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="Edit" VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ShareViewCellClicked" NumberOfTapsRequired="1" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image Source="share.png" 
+                                           HeightRequest="25" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="Share" VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+
+                           </StackLayout>
+                            
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </Grid>
+</ContentPage>
