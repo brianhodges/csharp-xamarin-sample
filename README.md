@@ -1,0 +1,3 @@
+# csharp-xamarin-sample
+
+Template for Cross Platform mobile apps - In Progress...
