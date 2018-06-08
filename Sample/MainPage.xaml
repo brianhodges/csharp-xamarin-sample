@@ -20,11 +20,7 @@
             PositionSelectedCommand="{Binding MyCommand}"
             PositionSelected="Handle_PositionSelected"
             Scrolled="Handle_Scrolled"
-            Orientation="Horizontal">
-            <cv:CarouselViewControl.GestureRecognizers>
-                <TapGestureRecognizer Tapped="SlideClicked" NumberOfTapsRequired="1" />
-            </cv:CarouselViewControl.GestureRecognizers>
-        </cv:CarouselViewControl>
+            Orientation="Horizontal" />
             
         <ListView x:Name="lstView" BackgroundColor="#E5F0F4" HasUnevenRows="true" Grid.Row="1">
             <ListView.ItemTemplate>

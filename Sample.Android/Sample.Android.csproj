@@ -86,10 +86,10 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\slide1.jpg" />
     <AndroidResource Include="Resources\drawable\slide2.jpg" />
-    <AndroidResource Include="Resources\drawable\slide3.jpg" />
     <AndroidResource Include="Resources\drawable\slide4.jpg" />
     <AndroidResource Include="Resources\drawable\pencil.png" />
     <AndroidResource Include="Resources\drawable\share.png" />
+    <AndroidResource Include="Resources\drawable\slide3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

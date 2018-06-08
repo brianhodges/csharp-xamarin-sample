@@ -58,11 +58,6 @@ namespace Sample
 			DisplayAlert("Share", "Do some action to share " + item.Name, "OK");
         }
         
-		void SlideClicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Click", "Do some action on image tap ", "OK");
-        }
-        
 		void ViewCellTap(ViewCell m, EventArgs eventArgs)
 		{
 			Item item = (Item)m.BindingContext;
