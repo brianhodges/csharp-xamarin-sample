@@ -6,23 +6,19 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Sample.MainPage">
     
-    <Grid BackgroundColor="#E5F0F4">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="250" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <StackLayout Spacing="0" BackgroundColor="#E5F0F4">
 
         <cv:CarouselViewControl x:Name="carousel"
-            Grid.Row="0"
             ItemsSource="{Binding MyItemsSource}"
             ShowArrows="false"
             ShowIndicators="true"
             PositionSelectedCommand="{Binding MyCommand}"
             PositionSelected="Handle_PositionSelected"
             Scrolled="Handle_Scrolled"
-            Orientation="Horizontal" />
+            Orientation="Horizontal"
+            HeightRequest="250" />
             
-        <ListView x:Name="lstView" BackgroundColor="#E5F0F4" HasUnevenRows="true" Grid.Row="1">
+        <ListView x:Name="lstView" BackgroundColor="#E5F0F4" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Tapped="ViewCellTap">
@@ -77,6 +73,55 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Grid BackgroundColor="Black" Opacity="0.6"
+              VerticalOptions="End"
+              HorizontalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1" />
+                <RowDefinition Height="55" />
+                <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Grid.Row="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Phone_Tapped" NumberOfTapsRequired="1" /> 
+                </StackLayout.GestureRecognizers>
+                <ffimageloading:CachedImage Source="phone.png" HeightRequest="30" />
+                <Label TextColor="White" Text="Phone" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Grid.Row="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Send_Tapped" NumberOfTapsRequired="1" /> 
+                </StackLayout.GestureRecognizers>
+                <ffimageloading:CachedImage Source="send.png" HeightRequest="30" />
+                <Label TextColor="White" Text="Message" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <StackLayout Grid.Column="2" Grid.Row="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Media_Tapped" NumberOfTapsRequired="1" /> 
+                </StackLayout.GestureRecognizers>
+                <ffimageloading:CachedImage Source="film.png" HeightRequest="30" />
+                <Label TextColor="White" Text="Media" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <StackLayout Grid.Column="3" Grid.Row="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Settings_Tapped" NumberOfTapsRequired="1" /> 
+                </StackLayout.GestureRecognizers>
+                <ffimageloading:CachedImage Source="wrench.png" HeightRequest="30" />
+                <Label TextColor="White" Text="Settings" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            
+        </Grid>
         
-    </Grid>
+    </StackLayout>
 </ContentPage>

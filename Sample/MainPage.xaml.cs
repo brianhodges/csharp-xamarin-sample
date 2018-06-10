@@ -64,6 +64,26 @@ namespace Sample
 			//item.visibleButtons = true;
 			lstView.SelectedItem = null;
 		}
+
+		void Phone_Tapped(object sender, EventArgs e)
+		{
+			DisplayAlert("Phone", "", "OK");
+		}
+
+		void Send_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("Message", "", "OK");
+        }
+
+		void Media_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("Media", "", "OK");
+        }
+
+		void Settings_Tapped(object sender, EventArgs e)
+        {
+            DisplayAlert("Settings", "", "OK");
+        }
       
 		string LoremIpsum(int minWords, int maxWords, int minSentences, int maxSentences, int numParagraphs)
         {
