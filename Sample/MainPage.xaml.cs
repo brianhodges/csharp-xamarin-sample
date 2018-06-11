@@ -35,6 +35,17 @@ namespace Sample
 			lstView.ItemsSource = items;
         }
 
+		protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+
+            if (width > height) {
+				carousel.HeightRequest = 150;
+            } else {
+				carousel.HeightRequest = 250;
+            }
+        } 
+
 		void Handle_PositionSelected(object sender, CarouselView.FormsPlugin.Abstractions.PositionSelectedEventArgs e)
         {
             Debug.WriteLine("Position " + e.NewValue + " selected.");
