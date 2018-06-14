@@ -24,9 +24,11 @@
                     <ViewCell Tapped="ViewCellTap">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="40" />
+                                <RowDefinition Height="2" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="2" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10" />
@@ -34,19 +36,20 @@
                                 <ColumnDefinition Width="10" />
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="1" Font="Bold,26"
+                            <Label Grid.Row="1" Grid.Column="1" Font="Bold,26"
                                    Text="{Binding Name}" 
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
 
-                            <Label Grid.Row="1" Grid.Column="1" Font="14" 
+                            <Label Grid.Row="2" Grid.Column="1" Font="14" 
                                    Text="{Binding Description}"
                                    LineBreakMode="WordWrap"
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
 
-                            <StackLayout Spacing="20" Orientation="Horizontal" 
-                                         Opacity="0.7" Grid.Column="1" Grid.Row="2">
+                            <StackLayout IsVisible="{Binding visibleButtons}" 
+                                         Spacing="20" Orientation="Horizontal" 
+                                         Opacity="0.7" Grid.Column="1" Grid.Row="3">
 
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout.GestureRecognizers>

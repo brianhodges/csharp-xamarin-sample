@@ -14,30 +14,29 @@ namespace Sample
     public partial class MainPage : ContentPage
     {
 		MainViewModel _vm;
+		List<Item> items = new List<Item>();
 
         public MainPage()
         {
             InitializeComponent();
 			BindingContext = _vm = new MainViewModel();
 
-			Item[] items = {
-				new Item(){ Name = "Item 1", Description = LoremIpsum(10, 30, 1, 2, 1) },
-				new Item(){ Name = "Item 2", Description = LoremIpsum(10, 50, 1, 3, 2) },
-				new Item(){ Name = "Item 3", Description = LoremIpsum(10, 30, 1, 2, 1) },
-				new Item(){ Name = "Item 4", Description = LoremIpsum(10, 50, 1, 2, 5) },
-				new Item(){ Name = "Item 5", Description = LoremIpsum(10, 50, 1, 3, 1) },
-				new Item(){ Name = "Item 6", Description = LoremIpsum(10, 30, 1, 2, 1) },
-				new Item(){ Name = "Item 7", Description = LoremIpsum(10, 50, 3, 5, 2) },
-				new Item(){ Name = "Item 8", Description = LoremIpsum(10, 50, 2, 4, 1) },
-				new Item(){ Name = "Item 9", Description = LoremIpsum(10, 30, 1, 2, 1) }
-			};
-
+			items.Add(new Item() { Name = "Item 1", Description = LoremIpsum(10, 30, 1, 2, 1) });
+			items.Add(new Item() { Name = "Item 2", Description = LoremIpsum(10, 50, 1, 3, 2) });
+			items.Add(new Item() { Name = "Item 3", Description = LoremIpsum(10, 30, 1, 2, 1) });
+			items.Add(new Item() { Name = "Item 4", Description = LoremIpsum(10, 50, 1, 2, 5) });
+			items.Add(new Item() { Name = "Item 5", Description = LoremIpsum(10, 50, 1, 3, 1) });
+			items.Add(new Item() { Name = "Item 6", Description = LoremIpsum(10, 30, 1, 2, 1) });
+			items.Add(new Item() { Name = "Item 7", Description = LoremIpsum(10, 50, 3, 5, 2) });
+			items.Add(new Item() { Name = "Item 8", Description = LoremIpsum(10, 50, 2, 4, 1) });
+			items.Add(new Item() { Name = "Item 9", Description = LoremIpsum(10, 30, 1, 2, 1) });
+          
 			lstView.ItemsSource = items;
         }
 
 		protected override void OnSizeAllocated(double width, double height)
         {
-            base.OnSizeAllocated(width, height); //must be called
+            base.OnSizeAllocated(width, height);
 
             if (width > height) {
 				carousel.HeightRequest = 150;
@@ -72,8 +71,18 @@ namespace Sample
 		void ViewCellTap(ViewCell m, EventArgs eventArgs)
 		{
 			Item item = (Item)m.BindingContext;
-			//item.visibleButtons = true;
+			HideAllButtons();
+			item.visibleButtons = true;
 			lstView.SelectedItem = null;
+			m.ForceUpdateSize();
+		}
+
+        protected void HideAllButtons()
+		{
+			foreach (Item i in items)
+            {
+                i.visibleButtons = false;
+            }
 		}
 
 		void Phone_Tapped(object sender, EventArgs e)
