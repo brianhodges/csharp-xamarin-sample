@@ -1,12 +1,9 @@
-﻿using System;
+﻿using FFImageLoading.Forms;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Windows.Input;
-using FFImageLoading.Forms;
 using Xamarin.Forms;
 
-namespace Sample
+namespace Sample.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -21,11 +18,6 @@ namespace Sample
                 new CachedImage() { Source = "slide3.jpg", DownsampleToViewSize = false, Aspect = Aspect.AspectFill },
 				new CachedImage() { Source = "slide4.jpg", DownsampleToViewSize = false, Aspect = Aspect.AspectFill }
             };
-
-            MyCommand = new Command(() =>
-            {
-                Debug.WriteLine("Position selected.");
-            });
         }
 
         ObservableCollection<View> _myItemsSource;

@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Sample.ViewModels;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using FFImageLoading.Forms;
-using System.Diagnostics;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Text;
+using Xamarin.Forms;
 
-namespace Sample
+namespace Sample.Pages
 {
     public partial class MainPage : ContentPage
     {
@@ -37,23 +34,12 @@ namespace Sample
 		protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
-
-            if (width > height) {
-				carousel.HeightRequest = 150;
-            } else {
-				carousel.HeightRequest = 250;
-            }
+			carousel.HeightRequest = (width > height) ? 150 : 250;
         } 
 
 		void Handle_PositionSelected(object sender, CarouselView.FormsPlugin.Abstractions.PositionSelectedEventArgs e)
         {
             Debug.WriteLine("Position " + e.NewValue + " selected.");
-        }
-
-        void Handle_Scrolled(object sender, CarouselView.FormsPlugin.Abstractions.ScrolledEventArgs e)
-        {
-            Debug.WriteLine("Scrolled to " + e.NewValue + " percent.");
-            Debug.WriteLine("Direction = " + e.Direction);
         }
 
 		void EditViewCellClicked(ViewCell m, EventArgs e)
@@ -71,17 +57,16 @@ namespace Sample
 		void ViewCellTap(ViewCell m, EventArgs eventArgs)
 		{
 			Item item = (Item)m.BindingContext;
-			HideAllButtons();
-			item.visibleButtons = true;
+			HideAllButtons(item);
 			lstView.SelectedItem = null;
 			m.ForceUpdateSize();
 		}
 
-        protected void HideAllButtons()
+        protected void HideAllButtons(Item item)
 		{
 			foreach (Item i in items)
             {
-                i.visibleButtons = false;
+                i.visibleButtons = (item == i) ? true : false;
             }
 		}
 

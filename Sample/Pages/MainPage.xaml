@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Sample" 
              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             x:Class="Sample.MainPage">
+             x:Class="Sample.Pages.MainPage">
     
     <StackLayout Spacing="0" BackgroundColor="#E5F0F4">
 
@@ -12,13 +12,13 @@
             ItemsSource="{Binding MyItemsSource}"
             ShowArrows="false"
             ShowIndicators="true"
-            PositionSelectedCommand="{Binding MyCommand}"
             PositionSelected="Handle_PositionSelected"
-            Scrolled="Handle_Scrolled"
             Orientation="Horizontal"
             HeightRequest="250" />
             
-        <ListView x:Name="lstView" BackgroundColor="#E5F0F4" HasUnevenRows="true">
+        <ListView x:Name="lstView" 
+                  BackgroundColor="#E5F0F4" 
+                  HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Tapped="ViewCellTap">
@@ -36,20 +36,27 @@
                                 <ColumnDefinition Width="10" />
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="1" Grid.Column="1" Font="Bold,26"
-                                   Text="{Binding Name}" 
+                            <Label Text="{Binding Name}"
+                                   Grid.Row="1" 
+                                   Grid.Column="1" 
+                                   Font="Bold,26"
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
 
-                            <Label Grid.Row="2" Grid.Column="1" Font="14" 
-                                   Text="{Binding Description}"
+                            <Label Text="{Binding Description}"
+                                   Grid.Row="2" 
+                                   Grid.Column="1" 
+                                   Font="14"
                                    LineBreakMode="WordWrap"
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
 
                             <StackLayout IsVisible="{Binding visibleButtons}" 
-                                         Spacing="20" Orientation="Horizontal" 
-                                         Opacity="0.7" Grid.Column="1" Grid.Row="3">
+                                         Spacing="20" 
+                                         Orientation="Horizontal" 
+                                         Opacity="0.7" 
+                                         Grid.Column="1" 
+                                         Grid.Row="3">
 
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout.GestureRecognizers>
@@ -77,7 +84,8 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid BackgroundColor="Black" Opacity="0.6"
+        <Grid BackgroundColor="Black" 
+              Opacity="0.6"
               VerticalOptions="End"
               HorizontalOptions="CenterAndExpand">
             <Grid.RowDefinitions>
