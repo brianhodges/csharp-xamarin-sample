@@ -42,7 +42,7 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Post Title -->
-                            <Label Text="{Binding Name}"
+                            <Label Text="{Binding Title}"
                                    Grid.Row="1" 
                                    Grid.Column="1" 
                                    Font="Bold,26"
@@ -50,15 +50,15 @@
                                    VerticalOptions="CenterAndExpand" />
                             <!-- /Post Title -->
 
-                            <!-- Post Description -->
-                            <Label Text="{Binding Description}"
+                            <!-- Post Text -->
+                            <Label Text="{Binding Text}"
                                    Grid.Row="2" 
                                    Grid.Column="1" 
                                    Font="14"
                                    LineBreakMode="WordWrap"
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
-                            <!-- /Post Description -->
+                            <!-- /Post Text -->
 
                             <StackLayout IsVisible="{Binding visibleButtons}" 
                                          Spacing="20" 

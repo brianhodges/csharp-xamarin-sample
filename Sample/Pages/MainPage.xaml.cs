@@ -12,24 +12,24 @@ namespace Sample.Pages
     public partial class MainPage : ContentPage
     {
 		MainViewModel _vm;
-		List<Item> items = new List<Item>();
+		List<Post> posts = new List<Post>();
 
         public MainPage()
         {
             InitializeComponent();
 			BindingContext = _vm = new MainViewModel();
 
-			items.Add(new Item() { Name = "Item 1", Description = LoremIpsum(10, 30, 1, 2, 1) });
-			items.Add(new Item() { Name = "Item 2", Description = LoremIpsum(10, 50, 1, 3, 2) });
-			items.Add(new Item() { Name = "Item 3", Description = LoremIpsum(10, 30, 1, 2, 1) });
-			items.Add(new Item() { Name = "Item 4", Description = LoremIpsum(10, 50, 1, 2, 5) });
-			items.Add(new Item() { Name = "Item 5", Description = LoremIpsum(10, 50, 1, 3, 1) });
-			items.Add(new Item() { Name = "Item 6", Description = LoremIpsum(10, 30, 1, 2, 1) });
-			items.Add(new Item() { Name = "Item 7", Description = LoremIpsum(10, 50, 3, 5, 2) });
-			items.Add(new Item() { Name = "Item 8", Description = LoremIpsum(10, 50, 2, 4, 1) });
-			items.Add(new Item() { Name = "Item 9", Description = LoremIpsum(10, 30, 1, 2, 1) });
+            posts.Add(new Post() { Title = "Item 1", Text = LoremIpsum(10, 30, 1, 2, 1) });
+            posts.Add(new Post() { Title = "Item 2", Text = LoremIpsum(10, 50, 1, 3, 2) });
+            posts.Add(new Post() { Title = "Item 3", Text = LoremIpsum(10, 30, 1, 2, 1) });
+            posts.Add(new Post() { Title = "Item 4", Text = LoremIpsum(10, 50, 1, 2, 5) });
+            posts.Add(new Post() { Title = "Item 5", Text = LoremIpsum(10, 50, 1, 3, 1) });
+            posts.Add(new Post() { Title = "Item 6", Text = LoremIpsum(10, 30, 1, 2, 1) });
+            posts.Add(new Post() { Title = "Item 7", Text = LoremIpsum(10, 50, 3, 5, 2) });
+            posts.Add(new Post() { Title = "Item 8", Text = LoremIpsum(10, 50, 2, 4, 1) });
+            posts.Add(new Post() { Title = "Item 9", Text = LoremIpsum(10, 30, 1, 2, 1) });
           
-			lstView.ItemsSource = items;
+            lstView.ItemsSource = posts;
         }
 
 		protected override void OnSizeAllocated(double width, double height)
@@ -45,29 +45,29 @@ namespace Sample.Pages
 
 		void EditViewCellClicked(ViewCell m, EventArgs e)
         {
-			Item item = (Item)m.BindingContext;
-			DisplayAlert("Edit", "Do some action to edit " + item.Name, "OK");
+			Post post = (Post)m.BindingContext;
+			DisplayAlert("Edit", "Do some action to edit " + post.Title, "OK");
         }
 
 		void ShareViewCellClicked(ViewCell m, EventArgs e)
         {
-            Item item = (Item)m.BindingContext;
-			DisplayAlert("Share", "Do some action to share " + item.Name, "OK");
+            Post post = (Post)m.BindingContext;
+			DisplayAlert("Share", "Do some action to share " + post.Title, "OK");
         }
         
 		void ViewCellTap(ViewCell m, EventArgs eventArgs)
 		{
-			Item item = (Item)m.BindingContext;
-			HideAllButtons(item);
+			Post post = (Post)m.BindingContext;
+			HideAllButtons(post);
 			lstView.SelectedItem = null;
 			m.ForceUpdateSize();
 		}
 
-        protected void HideAllButtons(Item item)
+        protected void HideAllButtons(Post post)
 		{
-			foreach (Item i in items)
+			foreach (Post p in posts)
             {
-                i.visibleButtons = (item == i) ? true : false;
+                p.visibleButtons = (post == p) ? true : false;
             }
 		}
 

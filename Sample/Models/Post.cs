@@ -2,12 +2,16 @@
 
 namespace Sample.Models
 {
-    public class Item : INotifyPropertyChanged
+    public class Post : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string ID { get; set; }
+        public string Title { get; set; }
+        public string Text { get; set; }
+        public string Author { get; set; }
+        public string Source { get; set; }
+        public string DateTimeCreated { get; set; }
         private bool _visibleButtons;
         public bool visibleButtons
         {
