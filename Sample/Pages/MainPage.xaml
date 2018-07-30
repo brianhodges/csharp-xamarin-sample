@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:Sample" 
              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:controls="clr-namespace:Sample.CustomControls"
              xmlns:helpers="clr-namespace:Sample.Helpers"
              x:Class="Sample.Pages.MainPage">
     
     <StackLayout Spacing="0" BackgroundColor="#E5F0F4">
 
+        <!-- Carousel View -->
         <cv:CarouselViewControl x:Name="carousel"
                                 ItemsSource="{Binding MyItemsSource}"
                                 ShowArrows="false"
@@ -17,12 +17,15 @@
                                 PositionSelected="Handle_PositionSelected"
                                 Orientation="Horizontal"
                                 HeightRequest="250" />
+        <!-- /Carousel View -->
             
+        <!-- Post Feed -->
         <ListView x:Name="lstView" 
                   BackgroundColor="#E5F0F4" 
                   HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
+                    <!-- Post -->
                     <ViewCell Tapped="ViewCellTap">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -38,13 +41,16 @@
                                 <ColumnDefinition Width="10" />
                             </Grid.ColumnDefinitions>
 
+                            <!-- Post Title -->
                             <Label Text="{Binding Name}"
                                    Grid.Row="1" 
                                    Grid.Column="1" 
                                    Font="Bold,26"
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
+                            <!-- /Post Title -->
 
+                            <!-- Post Description -->
                             <Label Text="{Binding Description}"
                                    Grid.Row="2" 
                                    Grid.Column="1" 
@@ -52,6 +58,7 @@
                                    LineBreakMode="WordWrap"
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
+                            <!-- /Post Description -->
 
                             <StackLayout IsVisible="{Binding visibleButtons}" 
                                          Spacing="20" 
@@ -60,32 +67,47 @@
                                          Grid.Column="1" 
                                          Grid.Row="3">
 
+                                <!-- Edit Button -->
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="EditViewCellClicked" NumberOfTapsRequired="1" />
                                     </StackLayout.GestureRecognizers>
-                                    <ffimageloading:CachedImage Source="pencil.png" 
-                                           HeightRequest="25" VerticalOptions="CenterAndExpand" />
-                                    <Label Text="Edit" VerticalOptions="CenterAndExpand" />
-                                </StackLayout>
 
+                                    <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Pencil}"
+                                                           Style="{StaticResource PostButton}"
+                                                           HorizontalOptions="CenterAndExpand" />
+                                    
+                                    <Label Text="Edit" 
+                                           VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                                <!-- /Edit Button -->
+
+                                <!-- Share Button -->
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ShareViewCellClicked" NumberOfTapsRequired="1" />
                                     </StackLayout.GestureRecognizers>
-                                    <ffimageloading:CachedImage Source="share.png" 
-                                           HeightRequest="25" VerticalOptions="CenterAndExpand" />
-                                    <Label Text="Share" VerticalOptions="CenterAndExpand" />
+
+                                    <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Share}"
+                                                           Style="{StaticResource PostButton}"
+                                                           HorizontalOptions="CenterAndExpand" />
+
+                                    <Label Text="Share" 
+                                           VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
+                                <!-- /Share Button -->
 
                            </StackLayout>
                             
                         </Grid>
                     </ViewCell>
+                    <!-- /Post -->
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <!-- /Post Feed -->
 
+        <!-- Action Buttons -->
         <Grid BackgroundColor="Black" 
               Opacity="0.6"
               VerticalOptions="End"
@@ -118,31 +140,56 @@
             </StackLayout>
             <!-- /Phone -->
 
+            <!-- Message -->
             <StackLayout Grid.Column="1" Grid.Row="1">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Send_Tapped" NumberOfTapsRequired="1" /> 
                 </StackLayout.GestureRecognizers>
-                <ffimageloading:CachedImage Source="send.png" HeightRequest="30" />
-                <Label TextColor="White" Text="Message" HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
 
+                <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Envelope}"
+                                       Style="{StaticResource ActionButton}"
+                                       HorizontalOptions="CenterAndExpand" />
+                
+                <Label TextColor="White" 
+                       Text="Message" 
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!-- /Message -->
+
+            <!-- Media -->
             <StackLayout Grid.Column="2" Grid.Row="1">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Media_Tapped" NumberOfTapsRequired="1" /> 
                 </StackLayout.GestureRecognizers>
-                <ffimageloading:CachedImage Source="film.png" HeightRequest="30" />
-                <Label TextColor="White" Text="Media" HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
 
+                <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Film}"
+                                       Style="{StaticResource ActionButton}"
+                                       HorizontalOptions="CenterAndExpand" />
+                
+                <Label TextColor="White" 
+                       Text="Media" 
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!-- /Media -->
+
+            <!-- Settings -->
             <StackLayout Grid.Column="3" Grid.Row="1">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Settings_Tapped" NumberOfTapsRequired="1" /> 
                 </StackLayout.GestureRecognizers>
-                <ffimageloading:CachedImage Source="wrench.png" HeightRequest="30" />
-                <Label TextColor="White" Text="Settings" HorizontalOptions="CenterAndExpand" />
+
+                <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Wrench}"
+                                       Style="{StaticResource ActionButton}"
+                                       HorizontalOptions="CenterAndExpand" />
+                
+                <Label TextColor="White" 
+                       Text="Settings"
+                       HorizontalOptions="CenterAndExpand" />
             </StackLayout>
+            <!-- /Settings -->
             
         </Grid>
+        <!-- /Action Buttons -->
         
     </StackLayout>
 </ContentPage>

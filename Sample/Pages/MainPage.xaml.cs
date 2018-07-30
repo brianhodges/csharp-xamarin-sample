@@ -1,4 +1,5 @@
-﻿using Sample.Models;
+﻿using Sample.Helpers;
+using Sample.Models;
 using Sample.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -70,24 +71,24 @@ namespace Sample.Pages
             }
 		}
 
-		void Phone_Tapped(object sender, EventArgs e)
+		async void Phone_Tapped(object sender, EventArgs e)
 		{
-			DisplayAlert("Phone", "", "OK");
-		}
-
-		void Send_Tapped(object sender, EventArgs e)
-        {
-            DisplayAlert("Message", "", "OK");
+            await Util.FadeStackLayoutTap(sender);
         }
 
-		void Media_Tapped(object sender, EventArgs e)
+		async void Send_Tapped(object sender, EventArgs e)
         {
-            DisplayAlert("Media", "", "OK");
+            await Util.FadeStackLayoutTap(sender);
         }
 
-		void Settings_Tapped(object sender, EventArgs e)
+		async void Media_Tapped(object sender, EventArgs e)
         {
-            DisplayAlert("Settings", "", "OK");
+            await Util.FadeStackLayoutTap(sender);
+        }
+
+		async void Settings_Tapped(object sender, EventArgs e)
+        {
+            await Util.FadeStackLayoutTap(sender);
         }
       
 		string LoremIpsum(int minWords, int maxWords, int minSentences, int maxSentences, int numParagraphs)

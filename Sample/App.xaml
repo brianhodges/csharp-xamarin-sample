@@ -5,15 +5,31 @@
              x:Class="Sample.App">
     <Application.Resources>
         <ResourceDictionary>
+           
+            <!-- Label Sizes -->
+            <OnPlatform x:TypeArguments="x:Double" x:Key="PostButtonSize">
+                <On Platform="Android" Value="24" />
+                <On Platform="iOS" Value="24" />
+            </OnPlatform>
+
             <OnPlatform x:TypeArguments="x:Double" x:Key="ActionButtonSize">
                 <On Platform="Android" Value="30" />
                 <On Platform="iOS" Value="30" />
             </OnPlatform>
+            <!-- /Label Sizes -->
+
+            <!-- Label Styles -->
+            <Style TargetType="controls:IconLabelBase" x:Key="PostButton">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="{StaticResource PostButtonSize}" />
+            </Style>
 
             <Style TargetType="controls:IconLabelBase" x:Key="ActionButton">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource ActionButtonSize}" />
             </Style>
+            <!-- /Label Styles -->
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

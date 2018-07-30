@@ -92,13 +92,7 @@
     <AndroidResource Include="Resources\drawable\slide1.jpg" />
     <AndroidResource Include="Resources\drawable\slide2.jpg" />
     <AndroidResource Include="Resources\drawable\slide4.jpg" />
-    <AndroidResource Include="Resources\drawable\pencil.png" />
-    <AndroidResource Include="Resources\drawable\share.png" />
     <AndroidResource Include="Resources\drawable\slide3.jpg" />
-    <AndroidResource Include="Resources\drawable\film.png" />
-    <AndroidResource Include="Resources\drawable\phone.png" />
-    <AndroidResource Include="Resources\drawable\send.png" />
-    <AndroidResource Include="Resources\drawable\wrench.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
