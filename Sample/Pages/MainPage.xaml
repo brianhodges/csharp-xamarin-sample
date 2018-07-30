@@ -4,17 +4,19 @@
              xmlns:local="clr-namespace:Sample" 
              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:Sample.CustomControls"
+             xmlns:helpers="clr-namespace:Sample.Helpers"
              x:Class="Sample.Pages.MainPage">
     
     <StackLayout Spacing="0" BackgroundColor="#E5F0F4">
 
         <cv:CarouselViewControl x:Name="carousel"
-            ItemsSource="{Binding MyItemsSource}"
-            ShowArrows="false"
-            ShowIndicators="true"
-            PositionSelected="Handle_PositionSelected"
-            Orientation="Horizontal"
-            HeightRequest="250" />
+                                ItemsSource="{Binding MyItemsSource}"
+                                ShowArrows="false"
+                                ShowIndicators="true"
+                                PositionSelected="Handle_PositionSelected"
+                                Orientation="Horizontal"
+                                HeightRequest="250" />
             
         <ListView x:Name="lstView" 
                   BackgroundColor="#E5F0F4" 
@@ -100,13 +102,21 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <!-- Phone -->
             <StackLayout Grid.Column="0" Grid.Row="1">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Phone_Tapped" NumberOfTapsRequired="1" /> 
                 </StackLayout.GestureRecognizers>
-                <ffimageloading:CachedImage Source="phone.png" HeightRequest="30" />
-                <Label TextColor="White" Text="Phone" HorizontalOptions="CenterAndExpand" />
+                
+                <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Phone}" 
+                                       Style="{StaticResource ActionButton}"
+                                       HorizontalOptions="CenterAndExpand" />
+                
+                <Label TextColor="White" 
+                       Text="Phone" 
+                       HorizontalOptions="CenterAndExpand" />
             </StackLayout>
+            <!-- /Phone -->
 
             <StackLayout Grid.Column="1" Grid.Row="1">
                 <StackLayout.GestureRecognizers>

@@ -1,7 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:Sample.CustomControls"
              x:Class="Sample.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:Double" x:Key="ActionButtonSize">
+                <On Platform="Android" Value="30" />
+                <On Platform="iOS" Value="30" />
+            </OnPlatform>
+
+            <Style TargetType="controls:IconLabelBase" x:Key="ActionButton">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="{StaticResource ActionButtonSize}" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

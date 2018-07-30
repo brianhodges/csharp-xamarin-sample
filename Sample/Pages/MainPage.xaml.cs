@@ -1,7 +1,7 @@
-﻿using Sample.ViewModels;
+﻿using Sample.Models;
+using Sample.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
@@ -118,29 +118,4 @@ namespace Sample.Pages
             return result.ToString();
         }      
     }
-
-	public class Item : INotifyPropertyChanged
-    {      
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		public string Name { get; set; }
-		public string Description { get; set; }
-		private bool _visibleButtons;
-		public bool visibleButtons
-        {
-            get
-            {
-                return _visibleButtons;
-            }
-            set
-            {
-				_visibleButtons = value;
-                OnPropertyChanged("visibleButtons");
-            }
-        }
-		protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-	}
 }
