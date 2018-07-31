@@ -10,7 +10,11 @@ namespace Sample
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
+            MainPage = new MasterDetailPage()
+            {
+                Master = new SidePanel() { Title = "Main Page" },
+                Detail = new NavigationPage(new MainPage())
+            };
         }
 
         protected override void OnStart()

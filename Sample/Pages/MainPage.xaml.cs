@@ -18,7 +18,7 @@ namespace Sample.Pages
         public MainPage()
         {
             InitializeComponent();
-			BindingContext = _vm = new MainViewModel();
+            BindingContext = _vm = new MainViewModel();
 
             FetchNewPosts();
         }
