@@ -4,8 +4,9 @@ using Sample.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using Xamarin.Forms;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Sample.Pages
 {
@@ -19,17 +20,7 @@ namespace Sample.Pages
             InitializeComponent();
 			BindingContext = _vm = new MainViewModel();
 
-            posts.Add(new Post() { Title = "Item 1", Text = LoremIpsum(10, 30, 1, 2, 1) });
-            posts.Add(new Post() { Title = "Item 2", Text = LoremIpsum(10, 50, 1, 3, 2) });
-            posts.Add(new Post() { Title = "Item 3", Text = LoremIpsum(10, 30, 1, 2, 1) });
-            posts.Add(new Post() { Title = "Item 4", Text = LoremIpsum(10, 50, 1, 2, 5) });
-            posts.Add(new Post() { Title = "Item 5", Text = LoremIpsum(10, 50, 1, 3, 1) });
-            posts.Add(new Post() { Title = "Item 6", Text = LoremIpsum(10, 30, 1, 2, 1) });
-            posts.Add(new Post() { Title = "Item 7", Text = LoremIpsum(10, 50, 3, 5, 2) });
-            posts.Add(new Post() { Title = "Item 8", Text = LoremIpsum(10, 50, 2, 4, 1) });
-            posts.Add(new Post() { Title = "Item 9", Text = LoremIpsum(10, 30, 1, 2, 1) });
-          
-            lstView.ItemsSource = posts;
+            FetchNewPosts();
         }
 
 		protected override void OnSizeAllocated(double width, double height)
@@ -46,13 +37,13 @@ namespace Sample.Pages
 		void EditViewCellClicked(ViewCell m, EventArgs e)
         {
 			Post post = (Post)m.BindingContext;
-			DisplayAlert("Edit", "Do some action to edit " + post.Title, "OK");
+            DisplayAlert("Edit", "Do some action to edit Post #" + post.ID, "OK");
         }
 
 		void ShareViewCellClicked(ViewCell m, EventArgs e)
         {
             Post post = (Post)m.BindingContext;
-			DisplayAlert("Share", "Do some action to share " + post.Title, "OK");
+            DisplayAlert("Share", "Do some action to share Post #" + post.ID, "OK");
         }
         
 		void ViewCellTap(ViewCell m, EventArgs eventArgs)
@@ -89,34 +80,23 @@ namespace Sample.Pages
 		async void Settings_Tapped(object sender, EventArgs e)
         {
             await Util.FadeStackLayoutTap(sender);
-        }
-      
-		string LoremIpsum(int minWords, int maxWords, int minSentences, int maxSentences, int numParagraphs)
+        }  
+
+        protected void FetchNewPosts()
         {
-            var words = new[]{ "lorem", "ipsum", "dolor", "sit", "amet", "consectetuer",
-                        "adipiscing", "elit", "sed", "diam", "nonummy", "nibh", "euismod",
-                        "tincidunt", "ut", "laoreet", "dolore", "magna", "aliquam", "erat" };
+            string apiUrl = "https://golang-dummydata.herokuapp.com/data.json";
+            var response = Util.Get(apiUrl);
+            posts = JsonConvert.DeserializeObject<List<Post>>(response);
+            lstView.ItemsSource = posts;
+        }
 
-            var rand = new Random();
-            int numSentences = rand.Next(maxSentences - minSentences) + minSentences + 1;
-            int numWords = rand.Next(maxWords - minWords) + minWords + 1;
-
-            StringBuilder result = new StringBuilder();
-
-            for (int p = 0; p < numParagraphs; p++)
-            {
-                for (int s = 0; s < numSentences; s++)
-                {
-                    for (int w = 0; w < numWords; w++)
-                    {
-                        if (w > 0) { result.Append(" "); }
-                        result.Append(words[rand.Next(words.Length)]);
-                    }
-                    result.Append(". ");
-                }
-            }
-  
-            return result.ToString();
-        }      
+        async void Handle_Refreshing(object sender, EventArgs e)
+        {
+            lstView.IsRefreshing = true;
+            lstView.ItemsSource = null;
+            await Task.Delay(1000);
+            FetchNewPosts();
+            lstView.IsRefreshing = false;
+        }
     }
 }

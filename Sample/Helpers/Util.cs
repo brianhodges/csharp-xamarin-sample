@@ -17,7 +17,7 @@ namespace Sample.Helpers
         }
 
         //HTTP /GET Requests
-        public string Get(string uri)
+        public static string Get(string uri)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;

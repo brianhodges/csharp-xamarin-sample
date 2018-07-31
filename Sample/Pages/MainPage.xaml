@@ -7,7 +7,7 @@
              xmlns:helpers="clr-namespace:Sample.Helpers"
              x:Class="Sample.Pages.MainPage">
     
-    <StackLayout Spacing="0" BackgroundColor="#E5F0F4">
+    <StackLayout Spacing="0">
 
         <!-- Carousel View -->
         <cv:CarouselViewControl x:Name="carousel"
@@ -21,7 +21,9 @@
             
         <!-- Post Feed -->
         <ListView x:Name="lstView" 
-                  BackgroundColor="#E5F0F4" 
+                  BackgroundColor="#E5F0F4"
+                  IsPullToRefreshEnabled="true"
+                  Refreshing="Handle_Refreshing"
                   HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -45,7 +47,7 @@
                             <Label Text="{Binding Title}"
                                    Grid.Row="1" 
                                    Grid.Column="1" 
-                                   Font="Bold,26"
+                                   Font="Bold,22"
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
                             <!-- /Post Title -->
