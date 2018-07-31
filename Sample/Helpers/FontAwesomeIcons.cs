@@ -8,5 +8,6 @@
         public static string Wrench = "\xf0ad";
         public static string Pencil = "\xf303";
         public static string Share = "\xf1e0";
+        public static string User = "\xf007";
     }
 }

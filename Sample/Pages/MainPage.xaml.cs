@@ -62,12 +62,12 @@ namespace Sample.Pages
             }
 		}
 
-		async void Phone_Tapped(object sender, EventArgs e)
+		async void Account_Tapped(object sender, EventArgs e)
 		{
             await Util.FadeStackLayoutTap(sender);
         }
 
-		async void Send_Tapped(object sender, EventArgs e)
+		async void Messages_Tapped(object sender, EventArgs e)
         {
             await Util.FadeStackLayoutTap(sender);
         }

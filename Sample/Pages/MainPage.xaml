@@ -132,37 +132,37 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Phone -->
+            <!-- Account -->
             <StackLayout Grid.Column="0" Grid.Row="1">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Phone_Tapped" NumberOfTapsRequired="1" /> 
+                    <TapGestureRecognizer Tapped="Account_Tapped" NumberOfTapsRequired="1" /> 
                 </StackLayout.GestureRecognizers>
                 
-                <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Phone}" 
+                <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.User}" 
                                        Style="{StaticResource ActionButton}"
                                        HorizontalOptions="CenterAndExpand" />
                 
                 <Label TextColor="White" 
-                       Text="Phone" 
+                       Text="Account" 
                        HorizontalOptions="CenterAndExpand" />
             </StackLayout>
-            <!-- /Phone -->
+            <!-- /Account -->
 
-            <!-- Message -->
+            <!-- Messages -->
             <StackLayout Grid.Column="1" Grid.Row="1">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Send_Tapped" NumberOfTapsRequired="1" /> 
+                    <TapGestureRecognizer Tapped="Messages_Tapped" NumberOfTapsRequired="1" /> 
                 </StackLayout.GestureRecognizers>
 
-                <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Envelope}"
+                <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.Envelope}"
                                        Style="{StaticResource ActionButton}"
                                        HorizontalOptions="CenterAndExpand" />
                 
                 <Label TextColor="White" 
-                       Text="Message" 
+                       Text="Messages" 
                        HorizontalOptions="CenterAndExpand" />
             </StackLayout>
-            <!-- /Message -->
+            <!-- /Messages -->
 
             <!-- Media -->
             <StackLayout Grid.Column="2" Grid.Row="1">
