@@ -20,6 +20,9 @@ namespace Sample.Pages
             InitializeComponent();
             BindingContext = _vm = new MainViewModel();
 
+            //Manually Open Side Panel
+            //MessagingCenter.Send(EventArgs.Empty, "OpenMenu");
+
             FetchNewPosts();
         }
 

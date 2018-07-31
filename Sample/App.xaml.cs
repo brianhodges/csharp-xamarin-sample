@@ -1,6 +1,8 @@
 using Sample.Pages;
 using Xamarin.Forms;
+using Sample.CustomControls;
 using Xamarin.Forms.Xaml;
+using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Sample
@@ -10,11 +12,20 @@ namespace Sample
         public App()
         {
             InitializeComponent();
-            MainPage = new MasterDetailPage()
+            var page = new MasterDetailPage()
             {
                 Master = new SidePanel() { Title = "Main Page" },
-                Detail = new NavigationPage(new MainPage())
+                Detail = new CustomNavigationPage(new MainPage())
             };
+            MainPage = page;
+
+            //Manually Open Side Panel
+            /*
+            MessagingCenter.Subscribe<EventArgs>(this, "OpenMenu", args =>
+            {
+                page.IsPresented = true;
+            });
+            */
         }
 
         protected override void OnStart()

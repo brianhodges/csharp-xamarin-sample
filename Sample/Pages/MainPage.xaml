@@ -116,8 +116,7 @@
         <!-- /Post Feed -->
 
         <!-- Action Buttons -->
-        <Grid BackgroundColor="Black" 
-              Opacity="0.6"
+        <Grid BackgroundColor="#666666"
               VerticalOptions="End"
               HorizontalOptions="CenterAndExpand">
             <Grid.RowDefinitions>
