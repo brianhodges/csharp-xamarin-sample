@@ -99,7 +99,13 @@
                                 </StackLayout>
                                 <!-- /Share Button -->
 
-                           </StackLayout>
+                                <!-- Username Label -->
+                                <Label Text="{Binding Username, StringFormat='Posted By: {0}'}"
+                                       FontAttributes="Italic"
+                                       VerticalOptions="CenterAndExpand" />
+                                <!-- /Username Label -->
+
+                            </StackLayout>
                             
                         </Grid>
                     </ViewCell>

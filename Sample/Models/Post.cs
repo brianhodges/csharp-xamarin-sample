@@ -9,7 +9,7 @@ namespace Sample.Models
         public string ID { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
-        public string Author { get; set; }
+        public string Username { get; set; }
         public string Source { get; set; }
         public string DateTimeCreated { get; set; }
         private bool _visibleButtons;
