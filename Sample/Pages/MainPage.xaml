@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:Sample.CustomControls"
              xmlns:helpers="clr-namespace:Sample.Helpers"
              x:Class="Sample.Pages.MainPage">
-    
+                 
     <StackLayout Spacing="0">
 
         <!-- Carousel View -->
@@ -69,7 +69,7 @@
                                         <TapGestureRecognizer Tapped="EditViewCellClicked" NumberOfTapsRequired="1" />
                                     </StackLayout.GestureRecognizers>
 
-                                    <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Pencil}"
+                                    <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.PaperPencil}"
                                                            Style="{StaticResource PostButton}"
                                                            HorizontalOptions="CenterAndExpand" />
                                     
@@ -94,7 +94,7 @@
                                 <!-- /Share Button -->
 
                                 <!-- Username Label -->
-                                <Label Text="{Binding Username, StringFormat='Posted By: {0}'}"
+                                <Label Text="{Binding Username, StringFormat='By: {0}'}"
                                        FontAttributes="Italic"
                                        VerticalOptions="CenterAndExpand" />
                                 <!-- /Username Label -->
@@ -139,10 +139,10 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Account_Tapped" NumberOfTapsRequired="1" /> 
                 </StackLayout.GestureRecognizers>
-                
+
                 <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.User}" 
-                                       Style="{StaticResource ActionButton}"
-                                       HorizontalOptions="CenterAndExpand" />
+                                         Style="{StaticResource ActionButton}"
+                                         HorizontalOptions="CenterAndExpand" />
                 
                 <Label TextColor="White" 
                        Text="Account" 
@@ -157,8 +157,8 @@
                 </StackLayout.GestureRecognizers>
 
                 <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.Envelope}"
-                                       Style="{StaticResource ActionButton}"
-                                       HorizontalOptions="CenterAndExpand" />
+                                         Style="{StaticResource ActionButton}"
+                                         HorizontalOptions="CenterAndExpand" />
                 
                 <Label TextColor="White" 
                        Text="Messages" 

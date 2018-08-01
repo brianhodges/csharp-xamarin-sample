@@ -9,6 +9,7 @@
         public static string Wrench = "\xf0ad";
 
         //Post Buttons
+        public static string PaperPencil = "\xf044";
         public static string Pencil = "\xf303";
         public static string Share = "\xf1e0";
 
