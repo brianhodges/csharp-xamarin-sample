@@ -29,24 +29,20 @@
                 <DataTemplate>
                     <!-- Post -->
                     <ViewCell Tapped="ViewCellTap">
-                        <Grid>
+                        <Grid Padding="10,5,10,5">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="2" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
-                                <RowDefinition Height="2" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="10" />
                             </Grid.ColumnDefinitions>
 
                             <!-- Post Title -->
                             <Label Text="{Binding Title}"
-                                   Grid.Row="1" 
-                                   Grid.Column="1" 
+                                   Grid.Row="0" 
                                    Font="Bold,22"
                                    HorizontalOptions="StartAndExpand"
                                    VerticalOptions="CenterAndExpand" />
@@ -54,8 +50,7 @@
 
                             <!-- Post Text -->
                             <Label Text="{Binding Text}"
-                                   Grid.Row="2" 
-                                   Grid.Column="1" 
+                                   Grid.Row="1" 
                                    Font="14"
                                    LineBreakMode="WordWrap"
                                    HorizontalOptions="StartAndExpand"
@@ -66,8 +61,7 @@
                                          Spacing="20" 
                                          Orientation="Horizontal" 
                                          Opacity="0.7" 
-                                         Grid.Column="1" 
-                                         Grid.Row="3">
+                                         Grid.Row="2">
 
                                 <!-- Edit Button -->
                                 <StackLayout Orientation="Horizontal">
@@ -106,6 +100,15 @@
                                 <!-- /Username Label -->
 
                             </StackLayout>
+
+                            <!-- DateTimeCreated -->
+                            <Label IsVisible="{Binding visibleButtons}"
+                                   Text="{Binding DateTimeCreated}"
+                                   TextColor="Gray"
+                                   FontSize="Small"
+                                   FontAttributes="Italic"
+                                   Grid.Row="3" />
+                            <!-- /DateTimeCreated -->
                             
                         </Grid>
                     </ViewCell>
