@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:controls="clr-namespace:Sample.CustomControls"
@@ -6,7 +6,17 @@
     <Application.Resources>
         <ResourceDictionary>
            
-            <!-- Label Sizes -->
+            <!-- Sizes -->
+            <OnPlatform x:TypeArguments="x:Double" x:Key="SideNavLinkSize">
+                <On Platform="Android" Value="30" />
+                <On Platform="iOS" Value="30" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="Thickness" x:Key="SideNavTopFrameMargin">
+                <On Platform="Android" Value="5,2,5,0" />
+                <On Platform="iOS" Value="5,25,5,0" />
+            </OnPlatform>
+            
             <OnPlatform x:TypeArguments="x:Double" x:Key="PostButtonSize">
                 <On Platform="Android" Value="24" />
                 <On Platform="iOS" Value="24" />
@@ -16,9 +26,14 @@
                 <On Platform="Android" Value="30" />
                 <On Platform="iOS" Value="30" />
             </OnPlatform>
-            <!-- /Label Sizes -->
+            <!-- /Sizes -->
 
-            <!-- Label Styles -->
+            <!-- Styles -->
+            <Style TargetType="controls:IconLabelBase" x:Key="SideNavLink">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="{StaticResource SideNavLinkSize}" />
+            </Style>
+            
             <Style TargetType="controls:IconLabelBase" x:Key="PostButton">
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontSize" Value="{StaticResource PostButtonSize}" />
@@ -28,7 +43,7 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="{StaticResource ActionButtonSize}" />
             </Style>
-            <!-- /Label Styles -->
+            <!-- /Styles -->
             
         </ResourceDictionary>
     </Application.Resources>
