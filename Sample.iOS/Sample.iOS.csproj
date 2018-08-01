@@ -97,6 +97,7 @@
     <BundleResource Include="Resources\Fonts\fa-regular-400.ttf" />
     <BundleResource Include="Resources\Fonts\fa-solid-900.ttf" />
     <BundleResource Include="Resources\hamburger.png" />
+    <BundleResource Include="Resources\panel.jpg" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

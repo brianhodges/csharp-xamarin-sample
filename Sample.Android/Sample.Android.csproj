@@ -91,6 +91,7 @@
     <AndroidResource Include="Resources\drawable\slide4.jpg" />
     <AndroidResource Include="Resources\drawable\slide3.jpg" />
     <AndroidResource Include="Resources\drawable\hamburger.png" />
+    <AndroidResource Include="Resources\drawable\panel.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />

@@ -12,9 +12,9 @@ namespace Sample.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SidePanel : ContentPage
 	{
-		public SidePanel ()
+		public SidePanel()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 		}
 	}
 }
