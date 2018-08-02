@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Sample.CustomControls
 {

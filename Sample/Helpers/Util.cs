@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using System.Text;
 
 namespace Sample.Helpers
 {

@@ -1,12 +1,12 @@
-﻿using Sample.Helpers;
+﻿using Newtonsoft.Json;
+using Sample.Helpers;
 using Sample.Models;
 using Sample.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Xamarin.Forms;
-using Newtonsoft.Json;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Sample.Pages
 {

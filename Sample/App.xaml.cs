@@ -1,8 +1,7 @@
+using Sample.CustomControls;
 using Sample.Pages;
 using Xamarin.Forms;
-using Sample.CustomControls;
 using Xamarin.Forms.Xaml;
-using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Sample

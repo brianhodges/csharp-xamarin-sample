@@ -1,5 +1,4 @@
-﻿using System;
-namespace Sample.Models
+﻿namespace Sample.Models
 {
     public class SideNavLink
     {
