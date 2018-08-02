@@ -5,8 +5,13 @@
              xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:controls="clr-namespace:Sample.CustomControls"
              xmlns:helpers="clr-namespace:Sample.Helpers"
+             Title="News Feed"
              x:Class="Sample.Pages.MainPage">
-                 
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="search.png" Clicked="Search_Tapped" />
+    </ContentPage.ToolbarItems>
+    
     <StackLayout Spacing="0">
 
         <!-- Carousel View -->

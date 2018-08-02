@@ -168,4 +168,7 @@
     <BundleResource Include="Resources\slide4.jpg" />
     <BundleResource Include="Resources\slide3.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search.png" />
+  </ItemGroup>
 </Project>

@@ -101,5 +101,10 @@ namespace Sample.Pages
             FetchNewPosts();
             lstView.IsRefreshing = false;
         }
+
+        async void Search_Tapped(object sender, EventArgs args)
+        {
+            //Show search bar
+        }
     }
 }
