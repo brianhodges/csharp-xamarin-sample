@@ -119,11 +119,13 @@ namespace Sample.Pages
         private void SearchBar_Unfocused(object sender, FocusEventArgs e)
         {
             searchBar.IsVisible = false;
+            stackLayout.Opacity = 1.0;
         }
 
         async void Search_Tapped(object sender, EventArgs args)
         {
             searchBar.IsVisible = true;
+            stackLayout.Opacity = 0.5;
             searchBar.Focus();
         }
     }

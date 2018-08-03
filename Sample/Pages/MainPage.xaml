@@ -14,6 +14,7 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <StackLayout Spacing="0"
+                         x:Name="stackLayout"
                          AbsoluteLayout.LayoutBounds="0,0,1,1"
                          AbsoluteLayout.LayoutFlags="All">
 
@@ -215,6 +216,8 @@
             <!-- Searchbar -->
             <SearchBar Placeholder="Search"
                        x:Name="searchBar"
+                       BackgroundColor="White"
+                       TextColor="DarkGray"
                        VerticalOptions="Start"
                        AbsoluteLayout.LayoutBounds="0,0,1,1"
                        AbsoluteLayout.LayoutFlags="All"
