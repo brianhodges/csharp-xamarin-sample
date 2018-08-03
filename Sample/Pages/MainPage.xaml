@@ -12,211 +12,216 @@
         <ToolbarItem Icon="search.png" Clicked="Search_Tapped" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Spacing="0">
+        <AbsoluteLayout>
+            <StackLayout Spacing="0"
+                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                         AbsoluteLayout.LayoutFlags="All">
 
-            <RelativeLayout>
                 <!-- Carousel View -->
                 <cv:CarouselViewControl x:Name="carousel"
                                         ItemsSource="{Binding MyItemsSource}"
                                         ShowArrows="false"
+                                        VerticalOptions="Start"
                                         ShowIndicators="true"
                                         PositionSelected="Handle_PositionSelected"
                                         Orientation="Horizontal"
                                         HeightRequest="250" />
                 <!-- /Carousel View -->
 
-                <!-- Searchbar -->
-                <SearchBar Placeholder="Search"
-                           x:Name="searchBar"
-                           VerticalOptions="Start"
-                           IsVisible="False"
-                           HeightRequest="35" />
-                <!-- /Searchbar -->
+                <!-- Post Feed -->
+                <ListView x:Name="lstView" 
+                          BackgroundColor="#E5F0F4"
+                          IsPullToRefreshEnabled="true"
+                          Refreshing="Handle_Refreshing"
+                          HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Post -->
+                            <ViewCell Tapped="ViewCellTap">
+                                <Grid Padding="10,5,10,5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-            </RelativeLayout>
-
-            <!-- Post Feed -->
-            <ListView x:Name="lstView" 
-                  BackgroundColor="#E5F0F4"
-                  IsPullToRefreshEnabled="true"
-                  Refreshing="Handle_Refreshing"
-                  HasUnevenRows="true">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <!-- Post -->
-                        <ViewCell Tapped="ViewCellTap">
-                            <Grid Padding="10,5,10,5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <!-- Post Title -->
-                                <Label Text="{Binding Title}"
-                                   Grid.Row="0" 
-                                   Font="Bold,22"
-                                   HorizontalOptions="StartAndExpand"
-                                   VerticalOptions="CenterAndExpand" />
-                                <!-- /Post Title -->
-
-                                <!-- Post Text -->
-                                <Label Text="{Binding Text}"
-                                   Grid.Row="1" 
-                                   Font="14"
-                                   LineBreakMode="WordWrap"
-                                   HorizontalOptions="StartAndExpand"
-                                   VerticalOptions="CenterAndExpand" />
-                                <!-- /Post Text -->
-
-                                <StackLayout IsVisible="{Binding visibleButtons}" 
-                                         Spacing="20" 
-                                         Orientation="Horizontal" 
-                                         Opacity="0.7" 
-                                         Grid.Row="2">
-
-                                    <!-- Edit Button -->
-                                    <StackLayout Orientation="Horizontal">
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="EditViewCellClicked" NumberOfTapsRequired="1" />
-                                        </StackLayout.GestureRecognizers>
-
-                                        <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.PaperPencil}"
-                                                           Style="{StaticResource PostButton}"
-                                                           HorizontalOptions="CenterAndExpand" />
-
-                                        <Label Text="Edit" 
+                                    <!-- Post Title -->
+                                    <Label Text="{Binding Title}"
+                                           Grid.Row="0" 
+                                           Font="Bold,22"
+                                           HorizontalOptions="StartAndExpand"
                                            VerticalOptions="CenterAndExpand" />
-                                    </StackLayout>
-                                    <!-- /Edit Button -->
+                                    <!-- /Post Title -->
 
-                                    <!-- Share Button -->
-                                    <StackLayout Orientation="Horizontal">
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="ShareViewCellClicked" NumberOfTapsRequired="1" />
-                                        </StackLayout.GestureRecognizers>
-
-                                        <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Share}"
-                                                           Style="{StaticResource PostButton}"
-                                                           HorizontalOptions="CenterAndExpand" />
-
-                                        <Label Text="Share" 
+                                    <!-- Post Text -->
+                                    <Label Text="{Binding Text}"
+                                           Grid.Row="1" 
+                                           Font="14"
+                                           LineBreakMode="WordWrap"
+                                           HorizontalOptions="StartAndExpand"
                                            VerticalOptions="CenterAndExpand" />
+                                    <!-- /Post Text -->
+
+                                    <StackLayout IsVisible="{Binding visibleButtons}" 
+                                                 Spacing="20" 
+                                                 Orientation="Horizontal" 
+                                                 Opacity="0.7" 
+                                                 Grid.Row="2">
+
+                                        <!-- Edit Button -->
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="EditViewCellClicked" NumberOfTapsRequired="1" />
+                                            </StackLayout.GestureRecognizers>
+
+                                            <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.PaperPencil}"
+                                                                   Style="{StaticResource PostButton}"
+                                                                   HorizontalOptions="CenterAndExpand" />
+
+                                            <Label Text="Edit" 
+                                                   VerticalOptions="CenterAndExpand" />
+                                        </StackLayout>
+                                        <!-- /Edit Button -->
+
+                                        <!-- Share Button -->
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="ShareViewCellClicked" NumberOfTapsRequired="1" />
+                                            </StackLayout.GestureRecognizers>
+
+                                            <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Share}"
+                                                                   Style="{StaticResource PostButton}"
+                                                                   HorizontalOptions="CenterAndExpand" />
+
+                                            <Label Text="Share" 
+                                                   VerticalOptions="CenterAndExpand" />
+                                        </StackLayout>
+                                        <!-- /Share Button -->
+
+                                        <!-- Username Label -->
+                                        <Label Text="{Binding Username, StringFormat='By: {0}'}"
+                                               FontAttributes="Italic"
+                                               VerticalOptions="CenterAndExpand" />
+                                        <!-- /Username Label -->
+
                                     </StackLayout>
-                                    <!-- /Share Button -->
 
-                                    <!-- Username Label -->
-                                    <Label Text="{Binding Username, StringFormat='By: {0}'}"
-                                       FontAttributes="Italic"
-                                       VerticalOptions="CenterAndExpand" />
-                                    <!-- /Username Label -->
+                                    <!-- DateTimeCreated -->
+                                    <Label IsVisible="{Binding visibleButtons}"
+                                           Text="{Binding DateTimeCreated}"
+                                           TextColor="Gray"
+                                           FontSize="Small"
+                                           FontAttributes="Italic"
+                                           Grid.Row="3" />
+                                    <!-- /DateTimeCreated -->
 
-                                </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                            <!-- /Post -->
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!-- /Post Feed -->
 
-                                <!-- DateTimeCreated -->
-                                <Label IsVisible="{Binding visibleButtons}"
-                                   Text="{Binding DateTimeCreated}"
-                                   TextColor="Gray"
-                                   FontSize="Small"
-                                   FontAttributes="Italic"
-                                   Grid.Row="3" />
-                                <!-- /DateTimeCreated -->
+                <!-- Action Buttons -->
+                <Grid BackgroundColor="#666666"
+                      VerticalOptions="End"
+                      HorizontalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                            </Grid>
-                        </ViewCell>
-                        <!-- /Post -->
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <!-- /Post Feed -->
+                    <!-- Account -->
+                    <StackLayout Grid.Column="0" Grid.Row="1">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Account_Tapped" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
 
-            <!-- Action Buttons -->
-            <Grid BackgroundColor="#666666"
-                  VerticalOptions="End"
-                  HorizontalOptions="CenterAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="1" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                        <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.User}" 
+                                                 Style="{StaticResource ActionButton}"
+                                                 HorizontalOptions="CenterAndExpand" />
 
-                <!-- Account -->
-                <StackLayout Grid.Column="0" Grid.Row="1">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Account_Tapped" NumberOfTapsRequired="1" />
-                    </StackLayout.GestureRecognizers>
+                        <Label TextColor="White" 
+                               Text="Account" 
+                               HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <!-- /Account -->
 
-                    <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.User}" 
-                                             Style="{StaticResource ActionButton}"
-                                             HorizontalOptions="CenterAndExpand" />
+                    <!-- Messages -->
+                    <StackLayout Grid.Column="1" Grid.Row="1">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Messages_Tapped" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
 
-                    <Label TextColor="White" 
-                           Text="Account" 
-                           HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
-                <!-- /Account -->
+                        <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.Envelope}"
+                                                 Style="{StaticResource ActionButton}"
+                                                 HorizontalOptions="CenterAndExpand" />
 
-                <!-- Messages -->
-                <StackLayout Grid.Column="1" Grid.Row="1">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Messages_Tapped" NumberOfTapsRequired="1" />
-                    </StackLayout.GestureRecognizers>
+                        <Label TextColor="White" 
+                               Text="Messages" 
+                               HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <!-- /Messages -->
 
-                    <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.Envelope}"
-                                             Style="{StaticResource ActionButton}"
-                                             HorizontalOptions="CenterAndExpand" />
+                    <!-- Media -->
+                    <StackLayout Grid.Column="2" Grid.Row="1">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Media_Tapped" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
 
-                    <Label TextColor="White" 
-                           Text="Messages" 
-                           HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
-                <!-- /Messages -->
+                        <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Film}"
+                                               Style="{StaticResource ActionButton}"
+                                               HorizontalOptions="CenterAndExpand" />
 
-                <!-- Media -->
-                <StackLayout Grid.Column="2" Grid.Row="1">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Media_Tapped" NumberOfTapsRequired="1" />
-                    </StackLayout.GestureRecognizers>
+                        <Label TextColor="White" 
+                               Text="Media" 
+                               HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <!-- /Media -->
 
-                    <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Film}"
-                                           Style="{StaticResource ActionButton}"
-                                           HorizontalOptions="CenterAndExpand" />
+                    <!-- Settings -->
+                    <StackLayout Grid.Column="3" Grid.Row="1">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Settings_Tapped" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
 
-                    <Label TextColor="White" 
-                           Text="Media" 
-                           HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
-                <!-- /Media -->
+                        <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Wrench}"
+                                               Style="{StaticResource ActionButton}"
+                                               HorizontalOptions="CenterAndExpand" />
 
-                <!-- Settings -->
-                <StackLayout Grid.Column="3" Grid.Row="1">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Settings_Tapped" NumberOfTapsRequired="1" />
-                    </StackLayout.GestureRecognizers>
+                        <Label TextColor="White" 
+                               Text="Settings"
+                               HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <!-- /Settings -->
 
-                    <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Wrench}"
-                                           Style="{StaticResource ActionButton}"
-                                           HorizontalOptions="CenterAndExpand" />
+                </Grid>
+                <!-- /Action Buttons -->
 
-                    <Label TextColor="White" 
-                           Text="Settings"
-                           HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
-                <!-- /Settings -->
+            </StackLayout>
 
-            </Grid>
-            <!-- /Action Buttons -->
+            <!-- Searchbar -->
+            <SearchBar Placeholder="Search"
+                       x:Name="searchBar"
+                       VerticalOptions="Start"
+                       AbsoluteLayout.LayoutBounds="0,0,1,1"
+                       AbsoluteLayout.LayoutFlags="All"
+                       IsVisible="False"
+                       HeightRequest="35" />
+            <!-- /Searchbar -->
 
-        </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

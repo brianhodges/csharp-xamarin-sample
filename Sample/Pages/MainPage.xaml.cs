@@ -13,7 +13,6 @@ namespace Sample.Pages
     public partial class MainPage : ContentPage
     {
 		MainViewModel _vm;
-        double pageWidth, pageHeight;
 		List<Post> posts = new List<Post>();
 
         public MainPage()
@@ -35,8 +34,6 @@ namespace Sample.Pages
 		protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
-            pageWidth = width;
-            pageHeight = height;
 			carousel.HeightRequest = (width > height) ? 150 : 250;
         } 
 
@@ -113,8 +110,7 @@ namespace Sample.Pages
         async void Search_Tapped(object sender, EventArgs args)
         {
             searchBar.IsVisible = true;
-            if (pageHeight > pageWidth)
-                searchBar.Focus();
+            searchBar.Focus();
         }
     }
 }
