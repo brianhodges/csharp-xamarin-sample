@@ -14,15 +14,26 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
 
-            <!-- Carousel View -->
-            <cv:CarouselViewControl x:Name="carousel"
-                                ItemsSource="{Binding MyItemsSource}"
-                                ShowArrows="false"
-                                ShowIndicators="true"
-                                PositionSelected="Handle_PositionSelected"
-                                Orientation="Horizontal"
-                                HeightRequest="250" />
-            <!-- /Carousel View -->
+            <RelativeLayout>
+                <!-- Carousel View -->
+                <cv:CarouselViewControl x:Name="carousel"
+                                        ItemsSource="{Binding MyItemsSource}"
+                                        ShowArrows="false"
+                                        ShowIndicators="true"
+                                        PositionSelected="Handle_PositionSelected"
+                                        Orientation="Horizontal"
+                                        HeightRequest="250" />
+                <!-- /Carousel View -->
+
+                <!-- Searchbar -->
+                <SearchBar Placeholder="Search"
+                           x:Name="searchBar"
+                           VerticalOptions="Start"
+                           IsVisible="False"
+                           HeightRequest="35" />
+                <!-- /Searchbar -->
+
+            </RelativeLayout>
 
             <!-- Post Feed -->
             <ListView x:Name="lstView" 
