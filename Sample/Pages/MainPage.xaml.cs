@@ -3,6 +3,7 @@ using Sample.Helpers;
 using Sample.Models;
 using Sample.ViewModels;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -19,11 +20,6 @@ namespace Sample.Pages
         {
             InitializeComponent();
             BindingContext = _vm = new MainViewModel();
-
-            searchBar.Unfocused += (s, e) =>
-            {
-                searchBar.IsVisible = false;
-            };
 
             //Manually Open Side Panel
             //MessagingCenter.Send(EventArgs.Empty, "OpenMenu");
@@ -105,6 +101,24 @@ namespace Sample.Pages
             await Task.Delay(1000);
             FetchNewPosts();
             lstView.IsRefreshing = false;
+        }
+
+        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+            {
+                lstView.ItemsSource = posts;
+            }
+            else
+            {
+                lstView.ItemsSource = posts.Where(p => p.Text.ToLower().Contains(e.NewTextValue.ToLower()) || 
+                                        p.Title.ToLower().Contains(e.NewTextValue.ToLower()));
+            }
+        }
+
+        private void SearchBar_Unfocused(object sender, FocusEventArgs e)
+        {
+            searchBar.IsVisible = false;
         }
 
         async void Search_Tapped(object sender, EventArgs args)

@@ -219,6 +219,8 @@
                        AbsoluteLayout.LayoutBounds="0,0,1,1"
                        AbsoluteLayout.LayoutFlags="All"
                        IsVisible="False"
+                       TextChanged="SearchBar_OnTextChanged"
+                       Unfocused="SearchBar_Unfocused"
                        HeightRequest="35" />
             <!-- /Searchbar -->
 
