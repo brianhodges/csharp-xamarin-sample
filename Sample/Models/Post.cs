@@ -10,7 +10,6 @@ namespace Sample.Models
         public string Title { get; set; }
         public string Text { get; set; }
         public string Username { get; set; }
-        public string Source { get; set; }
         public string DateTimeCreated { get; set; }
         private bool _visibleButtons;
         public bool visibleButtons
@@ -25,6 +24,7 @@ namespace Sample.Models
                 OnPropertyChanged("visibleButtons");
             }
         }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

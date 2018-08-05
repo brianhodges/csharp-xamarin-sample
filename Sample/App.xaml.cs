@@ -11,20 +11,14 @@ namespace Sample
         public App()
         {
             InitializeComponent();
+
             var page = new MasterDetailPage()
             {
                 Master = new SidePanel() { Title = "Main Page" },
                 Detail = new CustomNavigationPage(new MainPage())
             };
-            MainPage = page;
 
-            //Manually Open Side Panel
-            /*
-            MessagingCenter.Subscribe<EventArgs>(this, "OpenMenu", args =>
-            {
-                page.IsPresented = true;
-            });
-            */
+            MainPage = page;
         }
 
         protected override void OnStart()

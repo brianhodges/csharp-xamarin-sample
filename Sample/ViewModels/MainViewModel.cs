@@ -34,8 +34,6 @@ namespace Sample.ViewModels
             }
         }
 
-        public Command MyCommand { protected set; get; }
-
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

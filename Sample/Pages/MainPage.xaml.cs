@@ -21,9 +21,6 @@ namespace Sample.Pages
             InitializeComponent();
             BindingContext = _vm = new MainViewModel();
 
-            //Manually Open Side Panel
-            //MessagingCenter.Send(EventArgs.Empty, "OpenMenu");
-
             FetchNewPosts();
         }
 
@@ -103,7 +100,7 @@ namespace Sample.Pages
             lstView.IsRefreshing = false;
         }
 
-        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
             {
@@ -116,16 +113,16 @@ namespace Sample.Pages
             }
         }
 
-        private void SearchBar_Unfocused(object sender, FocusEventArgs e)
+        async void SearchBar_Unfocused(object sender, FocusEventArgs e)
         {
             searchBar.IsVisible = false;
-            stackLayout.Opacity = 1.0;
+            await stackLayout.FadeTo(1.0, 125);
         }
 
         async void Search_Tapped(object sender, EventArgs args)
         {
             searchBar.IsVisible = true;
-            stackLayout.Opacity = 0.5;
+            await stackLayout.FadeTo(0.5, 125);
             searchBar.Focus();
         }
     }
