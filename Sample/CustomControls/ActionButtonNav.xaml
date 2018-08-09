@@ -6,6 +6,7 @@
              xmlns:helpers="clr-namespace:Sample.Helpers">
     
   <ContentView.Content>
+        <!-- Action Buttons -->
         <Grid BackgroundColor="#666666"
               VerticalOptions="End"
               HorizontalOptions="FillAndExpand">
