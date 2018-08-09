@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sample.CustomControls.ActionButtonNav"
+             xmlns:controls="clr-namespace:Sample.CustomControls"
+             xmlns:helpers="clr-namespace:Sample.Helpers">
+    
+  <ContentView.Content>
+        <Grid BackgroundColor="#666666"
+              VerticalOptions="End"
+              HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Account -->
+            <StackLayout Grid.Column="0" 
+                         Grid.Row="0"
+                         VerticalOptions="Center">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Account_Tapped" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+
+                <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.User}" 
+                                         Style="{StaticResource ActionButton}"
+                                         HorizontalOptions="CenterAndExpand" />
+
+                <Label TextColor="White" 
+                       Text="Account" 
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!-- /Account -->
+
+            <!-- Messages -->
+            <StackLayout Grid.Column="1" 
+                         Grid.Row="0"
+                         VerticalOptions="Center">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Messages_Tapped" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+
+                <controls:FARegularLabel Text="{x:Static helpers:FontAwesomeIcons.Envelope}"
+                                         Style="{StaticResource ActionButton}"
+                                         HorizontalOptions="CenterAndExpand" />
+
+                <Label TextColor="White" 
+                       Text="Messages" 
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!-- /Messages -->
+
+            <!-- Media -->
+            <StackLayout Grid.Column="2" 
+                         Grid.Row="0"
+                         VerticalOptions="Center">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Media_Tapped" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+
+                <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Film}"
+                                       Style="{StaticResource ActionButton}"
+                                       HorizontalOptions="CenterAndExpand" />
+
+                <Label TextColor="White" 
+                       Text="Media" 
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!-- /Media -->
+
+            <!-- Settings -->
+            <StackLayout Grid.Column="3" 
+                         Grid.Row="0"
+                         VerticalOptions="Center">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Settings_Tapped" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+
+                <controls:FASolidLabel Text="{x:Static helpers:FontAwesomeIcons.Wrench}"
+                                       Style="{StaticResource ActionButton}"
+                                       HorizontalOptions="CenterAndExpand" />
+
+                <Label TextColor="White" 
+                       Text="Settings"
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!-- /Settings -->
+
+        </Grid>
+        <!-- /Action Buttons -->
+    </ContentView.Content>
+</ContentView>

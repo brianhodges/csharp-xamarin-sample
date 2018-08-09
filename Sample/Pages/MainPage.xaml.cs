@@ -63,26 +63,6 @@ namespace Sample.Pages
             }
 		}
 
-		async void Account_Tapped(object sender, EventArgs e)
-		{
-            await Util.FadeStackLayoutTap(sender);
-        }
-
-		async void Messages_Tapped(object sender, EventArgs e)
-        {
-            await Util.FadeStackLayoutTap(sender);
-        }
-
-		async void Media_Tapped(object sender, EventArgs e)
-        {
-            await Util.FadeStackLayoutTap(sender);
-        }
-
-		async void Settings_Tapped(object sender, EventArgs e)
-        {
-            await Util.FadeStackLayoutTap(sender);
-        }  
-
         protected void FetchNewPosts()
         {
             string apiUrl = "https://golang-dummydata.herokuapp.com/data.json";
@@ -122,7 +102,7 @@ namespace Sample.Pages
         async void Search_Tapped(object sender, EventArgs args)
         {
             searchBar.IsVisible = true;
-            await stackLayout.FadeTo(0.5, 125);
+            await stackLayout.FadeTo(0.8, 125);
             searchBar.Focus();
         }
     }

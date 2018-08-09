@@ -15,11 +15,19 @@
     <Folder Include="Screenshots\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="CustomControls\ActionButtonNav.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\SidePanel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Screenshots\screenshot1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="CustomControls\ActionButtonNav.xaml.cs">
+      <DependentUpon>ActionButtonNav.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
